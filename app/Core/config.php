@@ -1,23 +1,31 @@
 <?php
+/*
+app info
+*/
+define('APP_DESCRIPTION', 'free and paid tutorials');
 
-define('ROOT', 'http://localhost/undemy_clone_project/public');
-define('HOST', 'localhost');
-define('DBNAME', 'udemy_clone');
-define('DBDRIVER', 'mysql');
-define('USER', 'root');
-define('PASSWORD', '');
-define('APP_NAME', 'udemy website');
-define('DEBUG', true);
+// if ($_SERVER['SERVER_NAME'] == 'localhost') {
+//         //root path e.g localhost
+//     define('ROOT', 'http://localhost/udemy_clone_project.local');
 
-if($_SERVER['SERVER_NAME'] == 'localhost') {
-define('ROOT', 'http://localhost/undemy_clone_project/public');
-define('HOST', 'localhost');
-define('DBNAME', 'udemy_clone');
-define('DBDRIVER', 'mysql');
-define('USER', 'root');
-define('PASSWORD', '');
-define('APP_NAME', 'udemy website');
-define('DEBUG', true);
-}else {
+//     define('HOST', 'localhost');
+//     define('DBNAME', 'udemy_clone');
+//     define('DBDRIVER', 'mysql');
+//     define('USER', 'root');
+//     define('PASSWORD', '');
+//     define('APP_NAME', 'udemy website');
+//     define('DEBUG', true);
+// } else {
+        //root path e.g. www.udemy.com
+    define('ROOT', 'http://udemy_clone_project.local');
 
-}
+    define('HOST', 'localhost');
+    define('DBNAME', 'udemy_clone');
+    define('DBDRIVER', 'mysql');
+    define('USER', 'root');
+    define('PASSWORD', '');
+    define('APP_NAME', 'Udemy Website');
+    define('DEBUG', true);
+ 
+
+//}

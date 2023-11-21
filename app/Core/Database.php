@@ -9,7 +9,7 @@ class Database
         return $connection;
     }
 
-    public function query($query, $data = [])
+    public function query($query, $data = []) //we use prepared statement for sql injection prevention
     {
         $conn = $this->connect();
         $statement = $conn->prepare($query);
@@ -35,6 +35,23 @@ class Database
             }
         }
         return false;
+    }
+
+    public function createTable()
+    {
+        //USERS TABLE
+        $query = "CREATE TABLE IF NOT EXISTS `users` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `name` varchar(255) NOT NULL,
+            `email` varchar(255) NOT NULL,
+            `password` varchar(255) NOT NULL,
+            `date` date DEFAULT NULL,
+            PRIMARY KEY (`id`),
+            KEY `email` (`email`),
+            KEY `date` (`date`)
+           ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+           	
+           $this->query($query);
     }
 
 
