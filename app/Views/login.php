@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+  <title>Login - <?=APP_NAME;?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -62,21 +62,27 @@
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
+                  <?php if(message()) :?>
+                   <div class="alert alert-success text-center"> <?= message('', true);?></div>
+                    <?php endif; ?>
+                    <?php if(!empty($errors['email'])) :?>
+                   <div class="alert alert-danger text-center"> <?= $errors['email'];?></div>
+                    <?php endif; ?>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form method="post" action="" class="row g-3 needs-validation" novalidate>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="yourUsername" class="form-label">Email</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
+                        <input type="email" name="email" value="<?=old('email');?>" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Please enter your email.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="password" value="<?=old('password');?>" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 

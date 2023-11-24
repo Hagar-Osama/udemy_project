@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pages / Register - NiceAdmin Bootstrap Template</title>
+  <title>Register -  <?=APP_NAME;?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -63,39 +63,51 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form method="post" action="" class="row g-3 needs-validation" novalidate>
                     <div class="col-12">
                       <label for="yourName" class="form-label">Your Name</label>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
+                      <input type="text" name="name" value="<?=old('name');?>" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Please, enter your name!</div>
+                      <?php if(! empty($errors['name'])) : ?>
+                        <small class="text-danger"><?= $errors['name'];?></small>
+                        <?php endif; ?>
                     </div>
 
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Your Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
+                      <input type="email" name="email" value="<?=old('email');?>" class="form-control" id="yourEmail" required>
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please choose a username.</div>
-                      </div>
+                      <?php if(! empty($errors['email'])) : ?>
+                        <small class="text-danger"><?= $errors['email'];?></small>
+                        <?php endif; ?>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="password" value="<?=old('password');?>" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
+                      <?php if(! empty($errors['password'])) : ?>
+                        <small class="text-danger"><?= $errors['password'];?></small>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Confirm Password</label>
+                      <input type="password" name="confirm_password" value="<?=old('confirm_password');?>" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter your password!</div>
+                      <?php if(! empty($errors['confirm_password'])) : ?>
+                        <small class="text-danger"><?= $errors['confirm_password'];?></small>
+                        <?php endif; ?>
                     </div>
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <input class="form-check-input" name="terms" <?=old('terms')? 'checked' : "" ;?> type="checkbox" value="1" id="acceptTerms" required>
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
                         <div class="invalid-feedback">You must agree before submitting.</div>
+                        <?php if(! empty($errors['terms'])) : ?>
+                        <small class="text-danger"><?= $errors['terms'];?></small>
+                        <?php endif; ?>
                       </div>
                     </div>
                     <div class="col-12">
@@ -144,3 +156,4 @@
 </body>
 
 </html>
+

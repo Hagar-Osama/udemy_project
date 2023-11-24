@@ -9,6 +9,7 @@ class Model extends Database
     protected $order = 'ASC';
     protected $table = '';
     protected $allowedColumns = [];
+    public $errors = [];
 
     public function all()
     {
@@ -66,7 +67,8 @@ class Model extends Database
             }
         }
         $keys = array_keys($data);
-        $query = "insert into $this->table (" . implode(',', $keys) . ") values (:" . implode(',:', $keys) . ")";
+        $query = "insert into $this->table (" . implode(',', $keys) . ") 
+        values (:" . implode(',:', $keys) . ")";
         $this->query($query, $data);
         return false;
     }
